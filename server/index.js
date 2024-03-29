@@ -21,6 +21,13 @@ dotenv.config();
 // connection to database
 database.connect();
 
+app.use('/', express.static('../build'));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+})
+
+
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
